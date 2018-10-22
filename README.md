@@ -23,3 +23,9 @@
 
 Now even if your user clicks away from a page or refreshes, the relevant information which you had saved in state will still be there. Thank you, redux-persist, for this handy service!
 
+### Promises v/s Observables
+* [Promises vs Observables](https://medium.com/@mpodlasin/promises-vs-observables-4c123c51fe13)
+
+Promises are eager, Observables are lazy, Single value v/s multiple values, Not cancellable v/s cancellable, Multicast v/s either unicast or multicast, Always asynchronous v/s possibly asynchronous.
+
+``` Function passed to Observable constructor gets called only when someone actually subscribes to an Observable: ``` 
