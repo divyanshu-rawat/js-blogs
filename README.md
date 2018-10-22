@@ -5,3 +5,5 @@
 * [Angular 2 versus React: There Will Be Blood](https://medium.freecodecamp.org/angular-2-versus-react-there-will-be-blood-66595faafd51)
 * [JavaScript essentials for React developers](https://codeburst.io/whats-new-in-es6-or-es2015-480edf104489)
 * [Using Jest to run tests on a simple Node script dealing with fs module](https://medium.com/@shashankshekhar_40767/using-jest-mocking-to-run-tests-on-a-simple-node-script-dealing-with-fs-module-db8bc01ff583)
+
+* [Introducing Redux Offline: Offline-First Architecture for Progressive Web Applications and React Native](https://hackernoon.com/introducing-redux-offline-offline-first-architecture-for-progressive-web-applications-and-react-68c5167ecfe0)
