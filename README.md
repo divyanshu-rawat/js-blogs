@@ -47,3 +47,10 @@ A PWA provides features like push notification, home screen icon, full-screen an
 
 The PWA stores HTML files, CSS files and images in the browser cache and the developers can fully control the network call. All of these are being achieved by Service Workers.
 
+
+### React 16
+* [2 Minutes to Learn React 16's componentDidCatch Lifecycle Method](https://medium.com/@sgroff04/2-minutes-to-learn-react-16s-componentdidcatch-lifecycle-method-d1a69a1f753)
+
+``` “Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed. Error boundaries catch errors during rendering, in lifecycle methods, and in constructors of the whole tree below them.” -Dan Abramov ```
+
+``` In practice, most of the time you’ll want to declare an error boundary component once and use it throughout your application. -Dan Abramov ```
