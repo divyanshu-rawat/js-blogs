@@ -58,3 +58,17 @@ The PWA stores HTML files, CSS files and images in the browser cache and the dev
 
 ### Dart
 * [Why Dart is the Language to Learn of 2018](https://medium.com/@mswehli/why-dart-is-the-language-to-learn-of-2018-e5fa12adb6c1)
+
+
+### Redis
+* [Introduction to Redis + Node.js](https://codeburst.io/introduction-to-redis-node-js-demo-f3326dd43c0f)
+
+* [Using Redis with Node JS](https://hackernoon.com/using-redis-with-node-js-8d87a48c5dd7)
+
+Redis is an in-memory data structure store which can be used as a ``` database, a cache and a message broker ```. Simply Redis uses you RAM to store data which is very fast, however if you reboot your server the values are gone, unless you enable Redis persistence.
+
+* [Building an API Cache with Redis and Node](https://medium.com/ibm-watson-data-lab/building-an-api-cache-with-redis-and-node-3fbad5675d5d)
+
+Redis DataTypes : ``` Strings, Lists, Sets (sorted or otherwise), Hashes, Bitmaps, HyperLogLogs. ```
+
+
