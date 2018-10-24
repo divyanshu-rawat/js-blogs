@@ -103,3 +103,14 @@ import("./math").then(math => {
 Create React App, this is already configured for you and you can start using it immediately. 
 
 ``` React Loadable ``` wraps dynamic imports in a nice, React-friendly API for introducing code splitting into your app at a given component.
+
+* [Introducing React Loadable](https://jamie.build/react-loadable.html)
+
+A common piece of advice you will see is to break your app into separate routes and load each one asynchronously. This seems to work well enough for most apps, clicking on a link and loading a new page is not a terrible experience.
+
+So what if we optimized around components instead of delegating that responsibility to routes?
+
+``` It turns out quite a lot. There are many more places than just routes where you can pretty easily split apart your app. Modals, tabs, and many more UI components hide content until the user has done something to reveal it. ```
+
+Not to mention all the places where you can defer loading content until higher priority content is finished loading. 
+
