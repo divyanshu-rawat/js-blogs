@@ -72,3 +72,34 @@ Redis is an in-memory data structure store which can be used as a ``` database, 
 Redis DataTypes : ``` Strings, Lists, Sets (sorted or otherwise), Hashes, Bitmaps, HyperLogLogs. ```
 
 
+### Code Splitting
+* [React-Docs](https://reactjs.org/docs/code-splitting.html)
+
+Most React apps will have their files “bundled” using tools like ``` Webpack ``` or ``` Browserify. ```
+Browserify is an open-source JavaScript tool that allows developers to write Node.js-style modules that compile for use in the browser. 
+
+Bundling is the process of following imported files and merging them into a single file: a “bundle”. This bundle can then be included on a webpage to load an entire app at once.
+
+``` If you’re using Create React App, Next.js, Gatsby, or a similar tool, you will have a Webpack setup out of the box to bundle your app. ```
+
+Bundling is great, but as your app grows, your bundle will grow too. Especially if you are including large third-party libraries.
+
+To avoid winding up with a large bundle, it’s good to get ahead of the problem and start “splitting” your bundle.
+
+Code-splitting your app can help you “lazy-load” just the things that are currently needed by the user,``` which can dramatically improve the performance of your app.``` While you haven’t reduced the overall amount of code in your app, you’ve avoided loading code that the user may never need, and reduced the amount of code needed during the initial load.
+
+The best way to introduce code-splitting into your app is through the dynamic import() syntax.
+
+``` The best way to introduce code-splitting into your app is through the dynamic import() syntax. ```
+
+``` js 
+
+import("./math").then(math => {
+  console.log(math.add(16, 26));
+}); 
+
+```
+
+Create React App, this is already configured for you and you can start using it immediately. 
+
+``` React Loadable ``` wraps dynamic imports in a nice, React-friendly API for introducing code splitting into your app at a given component.
