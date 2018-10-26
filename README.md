@@ -114,3 +114,20 @@ So what if we optimized around components instead of delegating that responsibil
 
 Not to mention all the places where you can defer loading content until higher priority content is finished loading. 
 
+* [Why I chose React + Next.js for my next website instead of Vue or Angular](https://medium.freecodecamp.org/use-react-with-next-js-framework-and-how-it-made-my-life-easier-4280b643451)
+
+Next.js features:
+
+* Server-rendered by default (Yay!).
+* Automatic code splitting for faster page loads.
+* Simple client-side routing (page based).
+* Webpack-based dev environmet which supports Hot Module Replacement (HMR).
+* Able to implement with Express or any other Node.js HTTP server.
+* Customizable with your own Babel and Webpack configurations.
+
+* [Now – Global Serverless Deployments](https://zeit.co/now#whats-now)
+
+now allows you to take your JavaScript (Node.js) or Docker powered websites, applications and services to the cloud with ease, speed and reliability. In practical terms, any directory that contains a package.json or Dockerfile can be transported to the cloud with one command: now
+
+* [Getting Started](https://nextjs.org/learn/basics/getting-started/setup)
+
