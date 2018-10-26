@@ -114,6 +114,8 @@ So what if we optimized around components instead of delegating that responsibil
 
 Not to mention all the places where you can defer loading content until higher priority content is finished loading. 
 
+### Next.js
+
 * [Why I chose React + Next.js for my next website instead of Vue or Angular](https://medium.freecodecamp.org/use-react-with-next-js-framework-and-how-it-made-my-life-easier-4280b643451)
 
 Next.js features:
