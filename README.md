@@ -55,6 +55,10 @@ The PWA stores HTML files, CSS files and images in the browser cache and the dev
 
 ``` In practice, most of the time you’ll want to declare an error boundary component once and use it throughout your application. -Dan Abramov ```
 
+* [Portals](https://reactjs.org/docs/portals.html)
+
+Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
+
 
 ### Dart
 * [Why Dart is the Language to Learn of 2018](https://medium.com/@mswehli/why-dart-is-the-language-to-learn-of-2018-e5fa12adb6c1)
@@ -132,4 +136,6 @@ Next.js features:
 now allows you to take your JavaScript (Node.js) or Docker powered websites, applications and services to the cloud with ease, speed and reliability. In practical terms, any directory that contains a package.json or Dockerfile can be transported to the cloud with one command: now
 
 * [Getting Started](https://nextjs.org/learn/basics/getting-started/setup)
+
+
 
