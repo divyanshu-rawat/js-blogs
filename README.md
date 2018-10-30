@@ -1,11 +1,37 @@
-# JS-Blogs
+### JS-Blogs
 
 * [React’s JSX vs Vue’s templates: a showdown on the front end](https://medium.freecodecamp.org/reacts-jsx-vs-vue-s-templates-a-showdown-on-the-front-end-b00a70470409#.ycvoyji7a)
 * [What exactly is Node.js?](https://medium.freecodecamp.org/what-exactly-is-node-js-ae36e97449f5)
 * [Angular 2 versus React: There Will Be Blood](https://medium.freecodecamp.org/angular-2-versus-react-there-will-be-blood-66595faafd51)
 * [JavaScript essentials for React developers](https://codeburst.io/whats-new-in-es6-or-es2015-480edf104489)
-* [Using Jest to run tests on a simple Node script dealing with fs module](https://medium.com/@shashankshekhar_40767/using-jest-mocking-to-run-tests-on-a-simple-node-script-dealing-with-fs-module-db8bc01ff583)
+* [3 JavaScript Performance Mistakes You Should Stop Doing](https://hackernoon.com/3-javascript-performance-mistakes-you-should-stop-doing-ebf84b9de951)
+  * Looping Over an Array
+     * For Loop, average loop time: ~10 microseconds
+     * For-Of, average loop time: ~110 microseconds
+     * ForEach, average loop time: ~77 microseconds
+     * While, average loop time: ~11 microseconds
+     * Reduce, average loop time: ~113 microseconds
+     
+```  reduce and forEach requires a call back function to be executed which is called recursively and bloats the stack, and additional operation and verification which are made over the executed code. ```
 
+* Mistake 2
+   * Duplicating an Array
+       * Duplicate using ``` Slice, ``` average: ~367 microseconds
+       * Duplicate using ``` Map, ``` average: ~469 microseconds
+       * Duplicate using ``` Spread, ``` average: ~512 microseconds
+       * Duplicate using ``` Conct, ``` average: ~366 microseconds
+       * Duplicate using ``` Array From, ``` average: ~1,436 microseconds
+       * Duplicate manually, ``` average, ``` ~412 microseconds
+       
+* Mistake 3
+   * Iterating Objects
+       * Object iterate For-In, average: ~240 microseconds
+       * Object iterate Keys For Each, average: ~294 microseconds
+       * Object iterate Entries For-Of, average: ~535 microseconds
+
+### Testing
+
+* [Using Jest to run tests on a simple Node script dealing with fs module](https://medium.com/@shashankshekhar_40767/using-jest-mocking-to-run-tests-on-a-simple-node-script-dealing-with-fs-module-db8bc01ff583)
 
 ### Redux-Blogs
 
@@ -136,6 +162,97 @@ Next.js features:
 now allows you to take your JavaScript (Node.js) or Docker powered websites, applications and services to the cloud with ease, speed and reliability. In practical terms, any directory that contains a package.json or Dockerfile can be transported to the cloud with one command: now
 
 * [Getting Started](https://nextjs.org/learn/basics/getting-started/setup)
+
+
+### AWS
+* [AWS Lambda + Serverless Framework + Python](https://hackernoon.com/aws-lambda-serverless-framework-python-part-1-a-step-by-step-hello-world-4182202aba4a)
+
+The ``` Serverless ``` Framework helps you develop and deploy your ``` AWS Lambda functions ```, along with the AWS ``` infrastructure resources they require ```, allowing you to focus on building sophisticated, ``` event-driven, serverless architectures, comprised of Functions and Events.```
+
+A Function is an AWS Lambda function. It's an independent ``` unit of deployment, like a microservice. ``` It's merely code, deployed in the cloud, that is most often written to perform a single job such as:
+
+* Saving a user to the database.
+* Processing a file in a database.
+* Performing a scheduled task.
+
+Anything that triggers an AWS Lambda Function to execute is regarded by the Framework as an ``` Event ```. Events are infrastructure events on AWS such as:
+
+* An AWS API Gateway HTTP endpoint request (e.g., for a REST API)
+* An AWS S3 bucket upload (e.g., for an image)
+* A CloudWatch timer (e.g., run every 5 minutes)
+
+Resources are AWS ``` infrastructure components ``` which your Functions use such as.
+
+* An AWS ``` DynamoDB Table (e.g., for saving Users/Posts/Comments data) ```
+* An AWS ``` S3 Bucket (e.g., for saving images or files)```
+* An AWS ``` SNS Topic (e.g., for sending messages asynchronously)```
+
+A Service is the Framework's unit of organization. It's where you define your Functions, the Events that trigger them, and the Resources your Functions use, all in one file entitled ``` serverless.yml (or serverless.json or serverless.js).```
+
+```yml
+ 
+service: users
+
+functions: # Your "Functions"
+  usersCreate:
+    events: # The "Events" that trigger this function
+      - http: post users/create
+  usersDelete:
+    events:
+      - http: delete users/delete
+
+resources: # The "Resources" your "Functions" use.  Raw AWS CloudFormation goes in here.
+
+```
+
+More resource to explore:
+
+* [AWS - Functions](https://serverless.com/framework/docs/providers/aws/guide/functions/) 
+* [Create a Simple Lambda Function](https://docs.aws.amazon.com/lambda/latest/dg/get-started-create-function.html)
+* [What is the difference between a Serverless Function, and a Lambda Function?](https://stackoverflow.com/questions/49953270/what-is-the-difference-between-a-serverless-function-and-a-lambda-function)
+
+You can use AWS Lambda to run your code in response to events, such as changes to data in an Amazon S3 bucket or an Amazon DynamoDB table; to run your code in response to HTTP requests using Amazon API Gateway; or invoke your code using API calls made using AWS SDKs. With these capabilities, you can use Lambda to easily build data processing triggers for AWS services like Amazon S3 and Amazon DynamoDB, process streaming data stored in Kinesis, or create your own back end that operates at AWS scale, performance, and security.
+
+``` You can also build serverless applications composed of functions that are triggered by events and automatically deploy them using AWS CodePipeline and AWS CodeBuild.  ```
+
+When using AWS Lambda, you are responsible only for your code. AWS Lambda manages the compute fleet that offers a balance of ``` memory, CPU, network, and other resources. ``` This is in exchange for flexibility, which means you cannot log in to compute instances, or customize the operating system or language runtime. These constraints enable AWS Lambda to perform ``` operational and administrative activities on your behalf, including provisioning capacity, monitoring fleet health, applying security patches, deploying your code, and monitoring and logging your Lambda functions.```
+
+* [Serverless Dynamic Real-Time Dashboard with AWS DynamoDB, S3 and Cognito](https://medium.com/@rfreeman/serverless-dynamic-real-time-dashboard-with-aws-dynamodb-a1a7f8d3bc01)
+
+The downside is that you need to maintain your own infrastructure, servers and code base. In addition, if the volumes of data ingested per second is very high then different scalable patterns need to be implemented.
+ 
+Some of these issues can be addressed using Amazon Web Services (AWS) managed services like Amazon ElastiCache for in memory cache (Memcached or Redis are supported), Amazon DynamoDB as an NoSQL database that can reduce the maintenance and support requirements.
+
+AWS managed NoSQL DynamoDB, scalable static website in Amazon Simple Storage Service (S3) and security using Amazon Cognito and AWS Identity and Access Management (IAM) Roles removing the need to run any app server, web server or use a 3rd party service.
+
+* [Reduce latency and increase security using Amazon CloudFront.](https://aws.amazon.com/cloudfront/)
+
+Amazon CloudFront is a fast content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally with low latency, high transfer speeds, all within a developer-friendly environment. 
+
+* DynamoDB allows us to have a persistent store for the data.
+* Cognito and IAM role deals with the authentication and authorisation.
+* S3 deals with the hosting the HMTL, JavaScript and node.js code, making it low cost, scalable and secure.
+
+
+[Monolith Vs Microservice Vs Serverless — The Real Winner?](https://hackernoon.com/monolith-vs-microservice-vs-serverless-the-real-winner-the-developer-8aae6042fb48)
+
+### Serverless — The Advantages:
+
+Imagine the scenario where you have a new requirement handed down to you from upper management.
+
+* Shoe horn your new requirement into one of your existing systems
+* Architect a new system that handles this requirement
+* leverage the likes of AWS Lambda.
+
+You need not to take care of infrastructure, security, maintenance, scalability etc.
+``` AWS lambda does a hell of a lot of heavy lifting for you, including things like resiliency, horizontal scaling and so on. ```
+
+The advantages of a ``` microservice based approach ``` in this scenario is that you can effectively design, develop a microservice that satisfies ‘X’ and can be called from within your monolith through your favourite communication protocol.
+
+This allows you:
+
+* To independently scale ‘X’ to cope with variable demands on the system.
+* To reduce the risk of ‘X’ bringing down your system in Production at 3 in the morning.
 
 
 
