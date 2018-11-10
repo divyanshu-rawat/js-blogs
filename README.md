@@ -285,7 +285,9 @@ For example, the component could periodically dispatch an action to fetch orders
 
 Sagas provide a clean way of solving this problem, as they enable us to create a long-living task that periodically fetches new orders and dispatches an action to update the store.
 
-``` This approach of having many small services communicating with each other through message passing will be familiar to many backend engineers, but we generate and consume Redux actions instead of Kafka events. From our view on the developer side, it has been fascinating to watch these patterns applied to client code.
+``` 
+This approach of having many small services communicating with each other through message passing will be familiar to many backend engineers, but we generate and consume Redux actions instead of Kafka events. From our view on the developer side, it has been fascinating to watch these patterns applied to client code.
+
 ```
 
 
