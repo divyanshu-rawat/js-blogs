@@ -290,4 +290,32 @@ This approach of having many small services communicating with each other throug
 
 ```
 
+[Netflix Web Performance case study](https://medium.com/dev-channel/a-netflix-web-performance-case-study-c0bcde26a9d9?fbclid=IwAR3lhY1dAoJ5Xg3w_oDOKEMStiNfLs4Jz9Daxv9kdnNO455BJTP-pIDMzLc)
+
+``` 
+There are no silver bullets to web performance. Simple static pages benefit from being server-rendered with minimal JavaScript. Libraries can provide great value for complex pages when used with care.
+```
+
+* Loading and Time-to-Interactive decreased by 50% (for the logged-out desktop homepage at Netflix.com)
+* JavaScript bundle size reduced by 200kB by switching from React and other client-side libraries to vanilla JavaScript. React   was still used server-side.
+* Prefetching HTML, CSS and JavaScript (React) reduced Time-to-Interactive by 30% for future navigations.
+
+
+Even though React’s initial footprint was just 45kB, removing React, several libraries and the corresponding app code from the client-side reduced the total amount of JavaScript by over 200kB, causing an over-50% reduction in Netflix’s Time-to-Interactivity for the logged-out homepage.
+
+**Prefetching React for subsequent pages** To further improve performance when navigating their logged-out homepage, Netflix utilized the time spent by users on the landing page to prefetch resources for the next page users were likely to land on.
+
+This was achieved by using two techniques — the built-in <link rel=prefetch> browser API and XHR prefetching.
+
+*By using both the built-in browser API and XHR to prefetch HTML, CSS, and JS, the Time-to-Interactive was reduced by 30%.*
+
+**By prefetching resources and optimizing the client-side code on Netflix’s logged-out homepage. **
+
+Netflix was able to greatly improve their Time-to-Interactive metrics during the sign-up process. By prefetching future pages using the built-in browser API and XHR prefetching, Netflix was able to reduce Time-to-Interactive by 30%. This was for the second-page loading, which contained the bootstrapping code for single-page app sign-up flow.
+
+*The tradeoff Netflix decided to make is to server-render the landing page using React, but also pre-fetching React / the code for the rest of the signup flow while on it.This optimizes first load performance, but also optimizes the time to load for the rest of the signup flow, which has a much larger JS bundle size to download since it’s a single-page app.*
+
+
+
+
 
