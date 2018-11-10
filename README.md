@@ -290,6 +290,7 @@ This approach of having many small services communicating with each other throug
 
 ```
 
+## Netflix-eng
 [Netflix Web Performance case study](https://medium.com/dev-channel/a-netflix-web-performance-case-study-c0bcde26a9d9?fbclid=IwAR3lhY1dAoJ5Xg3w_oDOKEMStiNfLs4Jz9Daxv9kdnNO455BJTP-pIDMzLc)
 
 ``` 
@@ -317,5 +318,93 @@ Netflix was able to greatly improve their Time-to-Interactive metrics during the
 
 
 
+##COST OF JS
+
+[The Cost Of JavaScript In 2018](https://medium.com/@addyosmani/the-cost-of-javascript-in-2018-7d8950fbb5d4)
+
+Building interactive sites can involve sending JavaScript to your users. Often, too much of it. Have you been on a mobile page that looked like it had loaded only to tap on a link or tried to scroll and nothing happens?
+
+Today we’ll cover some strategies you can use to deliver JavaScript efficiently while still giving users a valuable experience.
+
+* To stay fast, only load JavaScript needed for the current page.
+  * Prioritize what a user will need and lazy-load the rest with [code-splitting](https://webpack.js.org/guides/code-splitting/). This gives you the best chance at loading and getting interactive fast. Stacks with route-based code-splitting by default are game-changers.
+
+* Embrace performance budgets and learn to live within them.
+  * mobile, aim for a JS budget of < 170KB minified/compressed. Uncompressed this is still ~0.7MB of code. Budgets are critical to success, however, they can’t magically fix perf in isolation. Team culture, structure and enforcement matter. Building without a budget invites performance regressions and failure.
+  
+* Learn how to audit and trim your JavaScript bundles. 
+  * There’s a high chance you’re shipping full-libraries when you only need a fraction, [polyfills for browsers that don’t need them, or duplicate code](https://webpack.js.org/guides/code-splitting/)
+  
+* Every interaction is the start of a new ‘Time-to-Interactive’
+  * consider optimizations in this context. Transmission size is critical for low-end mobile networks and JavaScript parse time for CPU-bound devices.
+  
+* If client-side JavaScript isn’t benefiting the user-experience, ask yourself if it’s really necessary.
+  * Maybe server-side-rendered HTML would actually be faster. Consider limiting the use of client-side frameworks to pages that absolutely require them. Server-rendering and client-rendering are a disaster if done poorly.
+  
+We’re hitting this ceiling across both desktop and mobile web, where sites are sometimes shipping multiple megabytes-worth of code that a browser then needs to process. The question to ask is, [can you afford this much JavaScript](https://infrequently.org/2017/10/can-you-afford-it-real-world-web-performance-budgets/)?
+ 
+ **Note: If you’re sending too much script, consider code-splitting to break up bundles or reducing [JS payloads using tree-shaking.](https://developers.google.com/web/fundamentals/performance/optimizing-javascript/tree-shaking/)**
+ 
+ 
+* A client-side framework or UI library
+* A state management solution (e.g. Redux)
+* Polyfills (often for modern browsers that don’t need them)
+* Full libraries vs. only what they use (e.g. all of lodash, Moment + locales)
+* A suite of UI components (buttons, headers, sidebars etc.)
+
+Loading too much JavaScript into the main thread (via <script>, etc) is the issue. Pulling JS into a [Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers) or caching via a [Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers/) doesn’t have the same negative Time-to-Interactive impact.
+ 
+Avoid blocking the main thread as much as possible. For more, see [Why web developers need to care about interactivity](https://philipwalton.com/articles/why-web-developers-need-to-care-about-interactivity/)
+
+* [Pinterest](https://medium.com/dev-channel/a-pinterest-progressive-web-app-performance-case-study-3bd6ed2e6154) reduced their JavaScript bundles from 2.5MB to < 200KB and Time-to-Interactive reduced from 23s to 5.6s. Revenue went up 44%, sign-ups are up 753%, weekly active users on mobile web are up 103%.
+
+* [AutoTrader](https://engineering.autotrader.co.uk/2017/07/24/how-we-halved-page-load-times.html) reduced their JavaScript bundle sizes by 56% and reduced Time-to-Interactive for their pages by ~50%.
+* [Nikkei](https://www.youtube.com/watch?v=Mv-l3-tJgGk&feature=youtu.be&t=1967) reduced their JavaScript bundle size by 43% and Time-to-Interactive improved by 14s.
+
+The orange represents all the time spent parsing JavaScript that popular sites are sending down. In yellow, is the time spent compiling. Together, these take anywhere up to 30% of the time it takes to process the JavaScript for your page — this is a real cost.
+
+A JPEG image needs to be decoded, rasterized, and painted on the screen. A JavaScript bundle needs to be downloaded and then parsed, compiled, executed —and there are a number of other steps that an engine needs to complete. Just be aware that these costs are not quite equivalent.
 
 
+“Variability is what kills the User Experience” — Ilya Grigorik. Fast devices can actually sometimes be slow. Fast networks can be slow, variability can end up making absolutely everything slow.
+
+If you want JavaScript to be fast, pay attention to download times for low end networks. The improvements you can make there are: ship less code, minify your source, take advantage of compression (i.e., gzip, [Brotli](https://github.com/google/brotli), and Zopfli).
+
+Take advantage of caching for repeat visits. Parse time is critical for phones with slow CPUs.
+
+Code-splitting is this idea that, instead of shipping down your users a massive monolithic JavaScript bundle — sort of like a massive full pizza — what if you were to just send them one slice at a time? Just enough script needed to make the current page usable.
+
+Code-splitting can be done at the page level, route level, or component level. It’s something that’s well supported by many modern libraries and frameworks through bundlers like webpack and Parcel. Guides to accomplish this are available for React, Vue.js and Angular.
+
+both [Twitter](https://blog.twitter.com/engineering/en_us/topics/open-source/2017/how-we-built-twitter-lite.html) and [Tinder](https://medium.com/@addyosmani/.
+a-tinder-progressive-web-app-performance-case-study-78919d98ece0) saw anywhere up to a 50% improvement in their Time to Interactive when they adopted aggressive code splitting.
+
+Stacks like Gatsby.js (React), Preact CLI, and PWA Starter Kit attempt to enforce good defaults for loading & getting interactive quickly on average mobile hardware.
+
+Tools like Webpack Bundle Analyzer, Source Map Explorer and Bundle Buddy allow you to audit your bundles for opportunities to trim them down.
+
+These tools visualize the content of your JavaScript bundles: they highlight large libraries, duplicate code, and dependencies you may not need.
+
+*Bundle auditing often highlights opportunities to swap heavy dependencies (like Moment.js and its locales) for lighter alternatives (such as date-fns).*
+
+We’ve recently added support for flagging high “JavaScript boot-up time” to Lighthouse. This audit highlights scripts which might be spending a long time parsing/compiling, which delays interactivity. You can look at this audit as opportunities to either split up those scripts, or just be doing less work there.
+
+``` 
+Code coverage is a feature in DevTools that allows you to discover unused JavaScript (and CSS) in your pages. Load up a page in DevTools and the coverage tab will display how much code was executed vs. how much was loaded. You can improve the performance of your pages by only shipping the code a user needs.
+
+```
+This can be valuable for identifying opportunities to split up scripts and defer the loading of non-critical ones until they’re needed.
+
+If you’re looking for a pattern for serving JavaScript efficiently to your users, check out the [PRPL pattern](https://developers.google.com/web/fundamentals/performance/prpl-pattern/)
+
+PRPL (Push, Render, Precache and Lazy-Load) is a pattern for aggressively splitting code for every single route, then taking advantage of a service worker to pre-cache the JavaScript and logic needed for future routes, and lazy load it as needed.
+
+* The first is Long Tasks — an API enabling you to gather real-world telemetry on tasks (and their attributed scripts) that last longer than 50 milliseconds that could block the main thread. You can record these tasks and log them back to your analytics.
+
+* First Input Delay (FID) is a metric that measures the time from when a user first interacts with your site (i.e. when they tap a button) to the time when the browser is actually able to respond to that interaction. FID is still an early metric, but we have a polyfill available for it today that you can check out.
+
+*It’s well known that third-party JavaScript can have a dire impact on page load performance. While this remains true, it’s important to acknowledge that many of today’s experiences ship a lot of first-party JavaScript of their own, too. If we’re to load fast, we need to chip away at the impact both sides of this problem can have on the user experience.*
+
+[LOADING THIRD PARTY JS](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/)
+
+**Performance is a journey. Many small changes can lead to big gains.**
