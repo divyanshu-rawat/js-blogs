@@ -255,4 +255,37 @@ This allows you:
 * To reduce the risk of ‘X’ bringing down your system in Production at 3 in the morning.
 
 
+### uber-eng
+
+[Powering UberEATS with React Native and Uber Engineering](https://eng.uber.com/ubereats-react-native/)
+
+As noted earlier, React Native fuses web and mobile development, allowing us to write features either natively or in JavaScript.
+We ultimately architected UberEATS in much the same way as we would a regular React /Redux web app, eschewing iOS patterns and modules wherever possible. Fortunately for our needs and preferences, web concepts and technologies on the whole translate quite nicely to native development.
+
+One example of this easy translation to the web is the app’s routing functionality. On the web, Restaurant Dashboard uses the popular react-router library which enables routes to be defined declaratively, much in the same way as a View. However this system assumes the existence of URLs which tend to be lacking outside of the browser. React Native provides an imperative navigation library, which resembles the interface provided by UINavigationController.
+
+Another key lesson from the porting process was that it is highly advantageous to minimize interaction between iOS and JavaScript and concentrate logic in the JavaScript layer. Doing so has a number of significant benefits, such as:
+
+* Less context switching between JavaScript and Objective-C
+* Increased portability (through diminished platform-specific code)
+* Reduced scope for bugs
+
+Using Flow to type check allows us to verify that our state maintains its correct shape after this process, and it is a credit to the Flow community that new releases have continued to find possible sources of bugs in our application.
+
+It is often necessary to alter the store in response to asynchronous actions, such as network requests. Redux does not prescribe a way of doing this, but a common approach is to use `Thunks` , a middleware for Redux that allows actions to be functions that return a promise and dispatch additional actions along the way
+
+Our initial approach was to use Thunks, but we quickly ran into problems as our application logic (and side effects) became more complicated. Specifically, we encountered two side effect patterns that did not naturally fit into the Thunk model:
+
+* Periodic updates to application state
+* Coordination between side effects
+
+`Sagas` , an alternative side effect model for Redux apps, leverage ES6 (ECMAScript 6) generator functions to provide a less complicated option. Rather than extending the concept of an action, they are modeled as a separate thread which can access the store, listen to Redux actions, and dispatch new ones. In an effort to avoid Thunk-related problems, UberEATS.com recently migrated entirely to Sagas, giving us confidence that they could scale and were mature enough for our needs.
+
+For example, the component could periodically dispatch an action to fetch orders; alternatively, the Thunk could call itself recursively. Aside from the implementation issues, however, neither having a component with timer logic—nor an independent Thunk that keeps triggering itself—fits neatly into the Redux model.
+
+Sagas provide a clean way of solving this problem, as they enable us to create a long-living task that periodically fetches new orders and dispatches an action to update the store.
+
+``` This approach of having many small services communicating with each other through message passing will be familiar to many backend engineers, but we generate and consume Redux actions instead of Kafka events. From our view on the developer side, it has been fascinating to watch these patterns applied to client code.
+```
+
 
