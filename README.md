@@ -318,7 +318,7 @@ Netflix was able to greatly improve their Time-to-Interactive metrics during the
 
 
 
-##COST OF JS
+## COST OF JS
 
 [The Cost Of JavaScript In 2018](https://medium.com/@addyosmani/the-cost-of-javascript-in-2018-7d8950fbb5d4)
 
