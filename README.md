@@ -376,8 +376,7 @@ Code-splitting is this idea that, instead of shipping down your users a massive 
 
 Code-splitting can be done at the page level, route level, or component level. It’s something that’s well supported by many modern libraries and frameworks through bundlers like webpack and Parcel. Guides to accomplish this are available for React, Vue.js and Angular.
 
-both [Twitter](https://blog.twitter.com/engineering/en_us/topics/open-source/2017/how-we-built-twitter-lite.html) and [Tinder](https://medium.com/@addyosmani/.
-a-tinder-progressive-web-app-performance-case-study-78919d98ece0) saw anywhere up to a 50% improvement in their Time to Interactive when they adopted aggressive code splitting.
+both [Twitter](https://blog.twitter.com/engineering/en_us/topics/open-source/2017/how-we-built-twitter-lite.html) and [Tinder](https://medium.com/@addyosmani/a-tinder-progressive-web-app-performance-case-study-78919d98ece0) saw anywhere up to a 50% improvement in their Time to Interactive when they adopted aggressive code splitting.
 
 Stacks like Gatsby.js (React), Preact CLI, and PWA Starter Kit attempt to enforce good defaults for loading & getting interactive quickly on average mobile hardware.
 
