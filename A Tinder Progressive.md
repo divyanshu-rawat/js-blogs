@@ -60,3 +60,40 @@ Tinder adopted performance budgets for helping them hit their performance goals 
 Tinder are using [Atomic CSS](https://acss.io/) to create highly reusable CSS styles. All of these atomic CSS styles are inlined in the initial paint and some of the rest of the CSS is loaded in the stylesheet (including animation or base/reset styles). Critical styles have a maximum size of 20KB gzipped, with recent builds coming in at a lean < 11KB
 
 Tinder use CSS stats and Google Analytics for each release to keep track of what has changed. Before Atomic CSS was being used, average page load times were ~6.75s. After they were ~5.75s.
+
+* [CRITICAL CSS](https://www.smashingmagazine.com/2015/08/understanding-critical-css/)
+
+Using bundle analysis led to also also taking advantage of Webpack’s Lodash Module Replacement Plugin. The plugin creates smaller Lodash builds by replacing feature sets of modules with noop, identity or simpler alternatives:
+
+#### Runtime performance
+
+To improve runtime performance, Tinder opted to use requestIdleCallback() to defer non-critical actions into idle time.
+
+* [Using requestIdleCallback](https://developers.google.com/web/updates/2015/08/using-requestidlecallback)
+
+`requestIdleCallback(myNonEssentialWork);`
+
+#### Dependency upgrades
+
+In older versions of webpack, when bundling each module in your bundle would be wrapped in individual function closures. These wrapper functions made it slower for your JavaScript to execute in the browser. Webpack 3 introduced “scope hoisting” — the ability to concatenate the scope of all your modules into one closure and allow for your code to have a faster execution time in the browser. It accomplishes this with the Module Concatenation plugin:
+
+*Webpack 3’s scope hoisting improved Tinder’s initial JavaScript parsing time for vendor chunk by 8%.*
+
+#### React 16
+
+* [reduced file size](https://reactjs.org/blog/2017/09/26/react-v16.0.html#reduced-file-size)
+
+React 16 introduced improvements that decreased React’s bundle size compared to previous versions. This was in part due to better packaging (using Rollup) as well as removing now unused code.
+
+By updating from React 15 to React 16, Tinder reduced the total gzipped size of their vendor chunk by ~7%.
+
+The size of react + react-dom used to be~50KB gzipped and is now just ~35KB. Thanks to Dan Abramov, Dominic Gannaway and Nate Hunzaker who were instrumental in trimming down React 16’s bundle size.
+
+#### Workbox for network resilience and offline asset caching
+
+Tinder also use the [Workbox Webpack plugin](https://developers.google.com/web/tools/workbox/guides/codelabs/webpack) for caching both their Application Shell and their core static assets like their main, vendor, manifest bundles and CSS. This enables network resilience for repeat visits and ensures that the application starts-up more quickly when a user returns for subsequent visits.
+
+#### Oppurtunities
+
+Digging into the Tinder bundles using source-map-explorer (another bundle analysis tool), there are additional opportunities for reducing payload size. Before logging in, components like Facebook Photos, notifications, messaging and captchas are fetched. Moving these away from the critical path could save up to 20% off the main bundle:
+
