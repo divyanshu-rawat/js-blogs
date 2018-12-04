@@ -4,6 +4,20 @@
 * [What exactly is Node.js?](https://medium.freecodecamp.org/what-exactly-is-node-js-ae36e97449f5)
 * [Angular 2 versus React: There Will Be Blood](https://medium.freecodecamp.org/angular-2-versus-react-there-will-be-blood-66595faafd51)
 * [JavaScript essentials for React developers](https://codeburst.io/whats-new-in-es6-or-es2015-480edf104489)
+* 
+  * Sadly, and probably the worst choice ever made about JS, is that it’s weakly typed,And this weakly thing really is a pain because without types, the code is damn obscure.
+  * You can naively use a variable you didn’t ever declare, and it’s gonna be a global
+ 
+```Strict Mode is a feature in JavaScript that was introduced in ECMAScript 5. It eliminates some JavaScript silent errors by changing them to throw errors. ```
+ 
+ ```js 
+ let a = 10;
+let b = "10";
+let c = a + b; // 1010
+
+```
+```It’s dynamic, event-driven, uses an event-loop in a single-thread, which reduces concurrent programming complexity a lot```
+
 * [3 JavaScript Performance Mistakes You Should Stop Doing](https://hackernoon.com/3-javascript-performance-mistakes-you-should-stop-doing-ebf84b9de951)
   * Looping Over an Array
      * For Loop, average loop time: ~10 microseconds
