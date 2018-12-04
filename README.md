@@ -85,6 +85,8 @@ The PWA stores HTML files, CSS files and images in the browser cache and the dev
 
 Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
 
+* [Stateless Components VS Pure Components](https://medium.com/groww-engineering/stateless-component-vs-pure-component-d2af88a1200b)
+
 
 ### Dart
 * [Why Dart is the Language to Learn of 2018](https://medium.com/@mswehli/why-dart-is-the-language-to-learn-of-2018-e5fa12adb6c1)
