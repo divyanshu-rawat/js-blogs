@@ -4,9 +4,21 @@
 * [What exactly is Node.js?](https://medium.freecodecamp.org/what-exactly-is-node-js-ae36e97449f5)
 * [Angular 2 versus React: There Will Be Blood](https://medium.freecodecamp.org/angular-2-versus-react-there-will-be-blood-66595faafd51)
 * [JavaScript essentials for React developers](https://codeburst.io/whats-new-in-es6-or-es2015-480edf104489)
-* 
+* [The Top 10 Things Wrong with JavaScript](https://medium.com/javascript-non-grata/the-top-10-things-wrong-with-javascript-58f440d6b3d8)
+
   * Sadly, and probably the worst choice ever made about JS, is that it’s weakly typed,And this weakly thing really is a pain because without types, the code is damn obscure.
-  * You can naively use a variable you didn’t ever declare, and it’s gonna be a global
+  * You can naively use a variable you didn’t ever declare, and it’s gonna be a global.
+  * There is no integer type! JavaScript has only one numerical type and that’s (double precision) floating point.
+  * Object prototypes do not scale well to large applications; it’s a rather primitive and sloppy way to do object-oriented programming (but it’s flexible!). 
+  * Asynchronous programming in JavaScript is very messy. Callback hell is a frequent complaint. (Promises mitigate this to some extent, but are not a perfect solution.
+  
+But JavaScript is nothing like Lisp!
+
+* JavaScript’s C-like syntax robs it of Lisp’s clean and elegant syntax.
+* Lisp’s central data structure is the list. JavaScript doesn’t have a list data type. JavaScript’s central data structure is the associative array, which often masquerades as some other data type.
+* Lisp is homoiconic, i.e., its code and its data have the same primary representation. JavaScript is not. Not even a little bit.
+* Lisp’s homoiconicity provides for a powerful macro system. JavaScript does not have macros.
+* Lambdas do not make JavaScript Lisp-like, any more than C++, Java, Python, Haskell, and Smalltalk are Lisp-like.
  
 ```Strict Mode is a feature in JavaScript that was introduced in ECMAScript 5. It eliminates some JavaScript silent errors by changing them to throw errors. ```
  
@@ -17,6 +29,8 @@ let c = a + b; // 1010
 
 ```
 ```It’s dynamic, event-driven, uses an event-loop in a single-thread, which reduces concurrent programming complexity a lot```
+
+* [5 JavaScript “Bad” Parts That Are Fixed In ES6](https://medium.freecodecamp.org/5-javascript-bad-parts-that-are-fixed-in-es6-c7c45d44fd81)
 
 * [3 JavaScript Performance Mistakes You Should Stop Doing](https://hackernoon.com/3-javascript-performance-mistakes-you-should-stop-doing-ebf84b9de951)
   * Looping Over an Array
