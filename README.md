@@ -85,7 +85,13 @@ The PWA stores HTML files, CSS files and images in the browser cache and the dev
 
 Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
 
-* [Stateless Components VS Pure Components](https://medium.com/groww-engineering/stateless-component-vs-pure-component-d2af88a1200b)
+* [Stateless Component vs Pure Component](https://medium.com/groww-engineering/stateless-component-vs-pure-component-d2af88a1200b)
+
+Pure Components gives a considerable increase in performance because it reduces the number of render operation in the application which is a huge win for complex UI and therefore advised to use if possible.
+
+* [Learn the basics of destructuring props in React](https://medium.freecodecamp.org/the-basics-of-destructuring-props-in-react-a196696f5477)
+
+[SANDBOX](https://codesandbox.io/s/ovp7x99zvz)
 
 
 ### Dart
