@@ -121,6 +121,8 @@ Pure Components gives a considerable increase in performance because it reduces 
 
 [SANDBOX](https://codesandbox.io/s/ovp7x99zvz)
 
+* [React Hooks](Hooks are an upcoming feature that lets you use state and other React features without writing a class. They’re currently in React v16.7.0-alpha.)
+
 
 ### Dart
 * [Why Dart is the Language to Learn of 2018](https://medium.com/@mswehli/why-dart-is-the-language-to-learn-of-2018-e5fa12adb6c1)
