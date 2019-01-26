@@ -1,3 +1,8 @@
+
+### Random
+
+* [How I landed a full stack developer job without a tech degree or work experience](https://medium.freecodecamp.org/how-i-landed-a-full-stack-developer-job-without-a-tech-degree-or-work-experience-6add97be2051)
+
 ### JS-Blogs
 
 * [React’s JSX vs Vue’s templates: a showdown on the front end](https://medium.freecodecamp.org/reacts-jsx-vs-vue-s-templates-a-showdown-on-the-front-end-b00a70470409#.ycvoyji7a)
