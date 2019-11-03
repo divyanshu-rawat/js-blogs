@@ -450,3 +450,10 @@ PRPL (Push, Render, Precache and Lazy-Load) is a pattern for aggressively splitt
 [LOADING THIRD PARTY JS](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/)
 
 **Performance is a journey. Many small changes can lead to big gains.**
+
+
+## GraphQL
+
+[Three ways to represent your GraphQL schema](https://blog.apollographql.com/three-ways-to-represent-your-graphql-schema-a41f4175100d)
+
+
