@@ -457,3 +457,8 @@ PRPL (Push, Render, Precache and Lazy-Load) is a pattern for aggressively splitt
 [Three ways to represent your GraphQL schema](https://blog.apollographql.com/three-ways-to-represent-your-graphql-schema-a41f4175100d)
 
 
+## TS
+
+[Getting Started with React and TypeScript](https://www.pluralsight.com/guides/typescript-react-getting-started)
+
+
